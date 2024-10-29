@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="weaponcard" size="5.000000 7.868339" />
+    <ImageTarget name="monstercard" size="5.000000 7.868339" />
+    <ImageTarget name="charactercard" size="5.000000 7.868339" />
+  </Tracking>
+</QCARConfig>
