@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using System.Reflection;
 using UnityEngine;
 
 public class ItemButton : MonoBehaviour
@@ -19,18 +17,12 @@ public class ItemButton : MonoBehaviour
 
     public void OnMouseUpAsButton()
     {
-       // var weapon = GetSubclassByName<ScriptableObject>("Weapon");
-        //if (Item.GetType() == typeof(Weapon))
-       // {
-        //    holdingItem.GetComponent<HoldingItem>().HoldItem(weapon.weaponModel);
-       // }
-        //if (weapon != null) holdingItem.GetComponent<HoldingItem>().HoldItem(weapon.weaponModel);
-    }
-    
-    public static Type GetSubclassByName<T>(string subclassName) where T : ScriptableObject
-    {
-        return Assembly.GetAssembly(typeof(T))
-            .GetTypes()
-            .FirstOrDefault(type => type.IsSubclassOf(typeof(T)) && type.Name == subclassName);
+        Type weaponType = Item.GetType();
+        
+        if (weaponType == typeof(Weapon))
+        {
+            Weapon weapon = (Weapon)Item;
+            holdingItem.GetComponent<HoldingItem>().HoldItem(weapon.weaponModel);
+        } 
     }
 }

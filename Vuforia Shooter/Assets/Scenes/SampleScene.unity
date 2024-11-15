@@ -283,37 +283,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper_Rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 552573779}
+      addedObject: {fileID: 782628380}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 782628379}
   m_SourcePrefab: {fileID: 100100000, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
 --- !u!4 &552573777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
   m_PrefabInstance: {fileID: 552573776}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &552573778 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
-  m_PrefabInstance: {fileID: 552573776}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &552573779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552573778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810de443f75d0e5468e07eb02608ff15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: ff5c954cfde308e418d48767c41b4226, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +397,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &782628375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
+  m_PrefabInstance: {fileID: 552573776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &782628379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782628375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810de443f75d0e5468e07eb02608ff15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 11400000, guid: ff5c954cfde308e418d48767c41b4226, type: 2}
+--- !u!64 &782628380
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782628375}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
 --- !u!1 &862642786
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,34 +620,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   OnTargetFound:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1968793781}
-        m_TargetAssemblyTypeName: UnityEngine.Video.VideoPlayer, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnTargetLost:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1968793781}
-        m_TargetAssemblyTypeName: UnityEngine.Video.VideoPlayer, UnityEngine
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1141969545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,7 +929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1474853401
 Transform:
   m_ObjectHideFlags: 0

@@ -22,7 +22,6 @@ public class HoldingItem : MonoBehaviour
 
     public void HoldItem(GameObject itemPrefab)
     {
-        holdingItem.SetActive(true);
-        
+        Instantiate(itemPrefab);
     }
 }
