@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Anti-TankRifle
   m_EditorClassIdentifier: 
   name: 
-  weaponModel: {fileID: 919132149155446097, guid: 779dbdf1529134045aba8bcfff07f60c, type: 3}
+  weaponModel: {fileID: 673494236556264206, guid: 6e2f1c6b2b41fb945872b81a5c63ef05, type: 3}
   fireMode: 0
   fireRate: 0
