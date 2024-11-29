@@ -3,26 +3,15 @@ using UnityEngine;
 
 public class ItemButton : MonoBehaviour
 {
-    private GameObject holdingItem;
-    public static Action onFoundHoldingItem;
-    
     public ScriptableObject Item;
-    //public Weapon weapon;
 
-    private void Start()
+    private void OnMouseUpAsButton()
     {
-        holdingItem = GameObject.Find("HoldingItem");
-        onFoundHoldingItem?.Invoke();
-    }
-
-    public void OnMouseUpAsButton()
-    {
-        Type weaponType = Item.GetType();
-        
-        if (weaponType == typeof(Weapon))
+        //Check if this card is weapon and send weapon game script obj.
+        if (Item.GetType() == typeof(Weapon))
         {
             Weapon weapon = (Weapon)Item;
-            holdingItem.GetComponent<HoldingItem>().HoldItem(weapon.weaponModel);
-        } 
+            ButtonManager.Instance.clickedScriptableObject = weapon;
+        }
     }
 }
