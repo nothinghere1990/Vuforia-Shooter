@@ -602,7 +602,6 @@ GameObject:
   - component: {fileID: 543370431}
   - component: {fileID: 543370430}
   - component: {fileID: 543370435}
-  - component: {fileID: 543370434}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -677,18 +676,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543370427}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &543370434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543370427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6535d9748c6f146aa784a6c0c5abca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &543370435
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1183,7 +1170,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1956053780}
         m_TargetAssemblyTypeName: CharacterButton, Assembly-CSharp
-        m_MethodName: OnWeaponLost
+        m_MethodName: OnTargetLost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1904,9 +1891,9 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 543370434}
+      - m_Target: {fileID: 1956053784}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: ActiveAimTracking
+        m_MethodName: OnFoundMonster
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1919,9 +1906,9 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 543370434}
+      - m_Target: {fileID: 1956053784}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: ActiveAimTracking
+        m_MethodName: OnFoundMonster
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1991,6 +1978,7 @@ GameObject:
   - component: {fileID: 1956053782}
   - component: {fileID: 1956053780}
   - component: {fileID: 1956053783}
+  - component: {fileID: 1956053784}
   m_Layer: 0
   m_Name: PlayerCard
   m_TagString: Untagged
@@ -2055,7 +2043,7 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 543370434}
+      - m_Target: {fileID: 1956053784}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: ActiveController
         m_Mode: 6
@@ -2070,10 +2058,22 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 543370434}
+      - m_Target: {fileID: 1956053784}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: ActiveController
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1956053780}
+        m_TargetAssemblyTypeName: CharacterButton, Assembly-CSharp
+        m_MethodName: OnTargetLost
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2161,6 +2161,18 @@ MonoBehaviour:
   mCastedBehaviour: {fileID: 1956053778}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
+--- !u!114 &1956053784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956053774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6535d9748c6f146aa784a6c0c5abca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1968793780
 GameObject:
   m_ObjectHideFlags: 0

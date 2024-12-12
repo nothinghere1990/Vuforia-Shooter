@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0ea4d405988cf647b922ffb3e30a0c8, type: 3}
-  m_Name: Anti-TankRifle
+  m_Name: Anti-TankRifleConfig
   m_EditorClassIdentifier: 
   name: 
-  weaponModel: {fileID: 673494236556264206, guid: 6e2f1c6b2b41fb945872b81a5c63ef05, type: 3}
+  weaponModel: {fileID: 3464413162648894712, guid: 345dfa308914cfd4283f6c88fe0fdaf3, type: 3}
   fireMode: 0
   fireRate: 0

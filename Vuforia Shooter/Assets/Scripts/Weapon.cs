@@ -8,6 +8,9 @@ public class Weapon : ScriptableObject
 
    public FireMode fireMode;
    public float fireRate;
+   public float spread;
+   public float gunFireForce;
+   public float bulletDuration;
    
    public enum FireMode
    {

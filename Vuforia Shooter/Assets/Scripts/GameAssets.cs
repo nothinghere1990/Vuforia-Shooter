@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameAssets : MonoBehaviour
 {
@@ -13,4 +14,5 @@ public class GameAssets : MonoBehaviour
         }
     }
     
+    public Weapon antiTankRifleConfig;
 }

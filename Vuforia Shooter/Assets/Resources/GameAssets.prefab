@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef788b54c60e59d49bbd4c716ba33753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  antiTankRifle: {fileID: 11400000, guid: ff5c954cfde308e418d48767c41b4226, type: 2}
+  antiTankRifleConfig: {fileID: 11400000, guid: ff5c954cfde308e418d48767c41b4226, type: 2}
