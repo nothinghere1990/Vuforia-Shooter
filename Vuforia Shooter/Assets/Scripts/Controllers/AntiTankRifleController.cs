@@ -1,4 +1,7 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AntiTankRifleController : MonoBehaviour
 {
@@ -10,6 +13,9 @@ public class AntiTankRifleController : MonoBehaviour
     private Transform firePoint;
 
     private Transform bulletPool;
+
+    private bool startShooting;
+    private float bulletDuration;
     
     private void Awake()
     {
@@ -26,6 +32,15 @@ public class AntiTankRifleController : MonoBehaviour
     private void Start()
     {
         playerController.onFire += FireGun;
+
+        startShooting = false;
+        
+        foreach (Transform bullet in bulletPool)
+        {
+            bullet.gameObject.SetActive(false);
+        }
+
+        bulletDuration = antiTankRifleConfig.bulletDuration;
     }
 
     private GameObject InactiveBulletInPool()
@@ -40,11 +55,29 @@ public class AntiTankRifleController : MonoBehaviour
 
     private void FireGun()
     {
+        startShooting = true;
+        //bullet.transform.DOMove(playerController.monster.position, .5f);
+    }
+
+    private void FixedUpdate()
+    {
+        if (!startShooting) return;
+        
         GameObject bullet = InactiveBulletInPool();
+        
         if (bullet == null) return;
         
+        
+        
         //Inactive bullet.
-        if (antiTankRifleConfig.bulletDuration <= 0) bullet.SetActive(false);
+        if (bulletDuration <= 0)
+        {
+            print("disappear");
+            startShooting = false;
+            bullet.SetActive(false);
+            bullet.transform.position = firePoint.position;
+            bulletDuration = antiTankRifleConfig.bulletDuration;
+        }
         
         //Calculate hit point.
         Ray ray = new Ray(eyes.position, eyes.forward);
@@ -69,7 +102,8 @@ public class AntiTankRifleController : MonoBehaviour
         bullet.SetActive(true);
         
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * antiTankRifleConfig.gunFireForce, ForceMode.Impulse);
-        antiTankRifleConfig.bulletDuration -= Time.deltaTime;
+        print("force");
+        bulletDuration -= Time.fixedDeltaTime;
     }
 
     private void OnDisable()
