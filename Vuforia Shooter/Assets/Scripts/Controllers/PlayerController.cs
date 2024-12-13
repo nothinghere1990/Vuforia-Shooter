@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-   private CharacterController charCon;
    private FixedJoystick joystick;
+   
+   private CharacterController charCon;
+   private Transform characterModel;
    
    private bool activeControl;
    private float moveSpeed;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
    
    private void Awake()
    {
+      characterModel = transform.GetChild(0);
       charCon = GetComponentInChildren<CharacterController>();
       joystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
       monster = GameObject.Find("MonsterCard/Capsule").transform;
@@ -54,32 +57,38 @@ public class PlayerController : MonoBehaviour
       isMonsterFound = inputValue;
    }
 
-   private void Update()
+   private void FixedUpdate()
    {
       //Move
       if (!charCon.enabled || !activeControl) return;
       charCon.Move(new Vector3(joystick.Horizontal, 0, joystick.Vertical) * moveSpeed * Time.fixedDeltaTime);
-
+   }
+   
+   private void Update()
+   {
       //Aim
       if (isAimTracking && isMonsterFound)
       {
-         Vector3 aimDir = monster.position - transform.position;
+         Vector3 aimDir = monster.position - characterModel.position;
          Quaternion trackingLookAt = Quaternion.LookRotation(aimDir);
-         trackingLookAt = Quaternion.Slerp(transform.rotation, trackingLookAt, rotateSpeed * Time.fixedDeltaTime);
-         transform.rotation = trackingLookAt;
-         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+         trackingLookAt = Quaternion.Slerp(characterModel.rotation, trackingLookAt, rotateSpeed * Time.fixedDeltaTime);
+         characterModel.rotation = trackingLookAt;
+         characterModel.eulerAngles = new Vector3(0, characterModel.eulerAngles.y, 0);
          return;
       }
       
       //Rotate
-      if (joystick.Horizontal == 0 && joystick.Vertical == 0) return;
-      
-      Quaternion lookAt = Quaternion.LookRotation(charCon.velocity);
-      lookAt = Quaternion.Slerp(transform.rotation, lookAt, rotateSpeed * Time.fixedDeltaTime);
-      transform.rotation = lookAt;
-      transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+      if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+      {
+         Quaternion lookAt = Quaternion.LookRotation(charCon.velocity);
+         lookAt = Quaternion.Slerp(characterModel.rotation, lookAt, rotateSpeed * Time.fixedDeltaTime);
+         characterModel.rotation = lookAt;
+         characterModel.eulerAngles = new Vector3(0, characterModel.eulerAngles.y, 0);
+         print(lookAt);
+      }
       
       //Fire
-      if (holdingItem.GetType() == typeof(Weapon) && Input.GetMouseButtonDown(0)) onFire?.Invoke();
+      if (holdingItem != null && holdingItem.GetType() == typeof(Weapon) && Input.GetMouseButtonDown(0)) 
+         onFire?.Invoke();
    }
 }

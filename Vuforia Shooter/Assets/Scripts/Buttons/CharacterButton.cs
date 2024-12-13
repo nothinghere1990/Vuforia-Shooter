@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class CharacterButton : MonoBehaviour
 {
-    private Transform chracterModel => transform.GetChild(0);
+    private Transform characterModel;
     private Transform holdingItem;
 
     private PlayerController playerController;
 
     private void Awake()
     {
-        holdingItem = chracterModel.Find("HoldingItem");
+        characterModel = transform.GetChild(0);
+        holdingItem = characterModel.Find("HoldingItem");
         playerController = GetComponent<PlayerController>();
     }
 
@@ -24,10 +25,10 @@ public class CharacterButton : MonoBehaviour
           
             playerController.holdingItem = weapon;
                   
-            Transform playerWeapon = Instantiate(weapon.weaponModel, chracterModel).transform;
+            Transform playerWeapon = Instantiate(weapon.weaponModel, characterModel).transform;
             playerWeapon.position = holdingItem.position;
             playerWeapon.localScale = new Vector3(.2f, .2f, .2f);
-            if (chracterModel.childCount > 1) holdingItem.gameObject.SetActive(false);
+            if (characterModel.childCount > 1) holdingItem.gameObject.SetActive(false);
                   
             playerController.ActiveAimTracking(true);  
         }
@@ -35,10 +36,10 @@ public class CharacterButton : MonoBehaviour
 
     public void OnTargetLost()
     {
-        if (chracterModel.childCount < 2) return; //No Weapon Holding
+        if (characterModel.childCount < 3) return; //No Weapon Holding
         
         holdingItem.gameObject.SetActive(false);
-        Destroy(chracterModel.GetChild(2).gameObject);
+        Destroy(characterModel.GetChild(2).gameObject);
         
         playerController.ActiveAimTracking(false);
     }

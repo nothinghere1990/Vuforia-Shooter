@@ -16,3 +16,6 @@ MonoBehaviour:
   weaponModel: {fileID: 3464413162648894712, guid: 345dfa308914cfd4283f6c88fe0fdaf3, type: 3}
   fireMode: 0
   fireRate: 0
+  spread: 1
+  gunFireForce: 2
+  bulletDuration: 5
