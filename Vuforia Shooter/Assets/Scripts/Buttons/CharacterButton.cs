@@ -16,20 +16,20 @@ public class CharacterButton : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        if (ButtonManager.Instance.clickedScriptableObject == null || transform.childCount < 1) return;
+        if (ButtonManager.Instance.clickedConfig == null || transform.childCount < 1) return;
 
-        if (ButtonManager.Instance.clickedScriptableObject.GetType() == typeof(Weapon))
+        if (ButtonManager.Instance.clickedConfig.GetType() == typeof(WeaponConfig))
         { 
-            Weapon weapon = (Weapon)ButtonManager.Instance.clickedScriptableObject;
-            ButtonManager.Instance.clickedScriptableObject = null;
-          
-            playerController.holdingItem = weapon;
-                  
-            Transform playerWeapon = Instantiate(weapon.weaponModel, characterModel).transform;
+            //Get weapon from ButtonManager.
+            WeaponConfig weaponConfig = (WeaponConfig)ButtonManager.Instance.clickedConfig;
+            ButtonManager.Instance.clickedConfig = null;
+            
+            //Spawn weapon model on character.
+            Transform playerWeapon = Instantiate(weaponConfig.weaponModel, characterModel).transform;
             playerWeapon.position = holdingItem.position;
             playerWeapon.localScale = new Vector3(.2f, .2f, .2f);
             if (characterModel.childCount > 1) holdingItem.gameObject.SetActive(false);
-                  
+            
             playerController.ActiveAimTracking(true);  
         }
     }

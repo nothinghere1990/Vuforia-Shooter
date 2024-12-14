@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,10 +13,8 @@ public class PlayerController : MonoBehaviour
    private bool isAimTracking;
    private float rotateSpeed;
    
-   public ScriptableObject holdingItem;
-   
    private bool isMonsterFound;
-   public Transform monster;
+   private Transform monster;
    
    private void Awake()
    {
@@ -32,6 +29,12 @@ public class PlayerController : MonoBehaviour
       moveSpeed = 5;
       rotateSpeed = 6;
       ActiveAimTracking(false);
+   }
+
+   public void ResetCharacterPostion()
+   {
+      characterModel.localPosition = new Vector3(0, 1, 0);
+      characterModel.localRotation = Quaternion.identity;
    }
    
    public void ActiveController(bool input)
@@ -71,7 +74,7 @@ public class PlayerController : MonoBehaviour
          Quaternion trackingLookAt = Quaternion.LookRotation(aimDir);
          trackingLookAt = Quaternion.Slerp(characterModel.rotation, trackingLookAt, rotateSpeed * Time.fixedDeltaTime);
          characterModel.rotation = trackingLookAt;
-         characterModel.eulerAngles = new Vector3(0, characterModel.eulerAngles.y, 0);
+         //characterModel.eulerAngles = new Vector3(0, characterModel.eulerAngles.y, 0);
          return;
       }
       
@@ -81,7 +84,7 @@ public class PlayerController : MonoBehaviour
          Quaternion lookAt = Quaternion.LookRotation(charCon.velocity);
          lookAt = Quaternion.Slerp(characterModel.rotation, lookAt, rotateSpeed * Time.fixedDeltaTime);
          characterModel.rotation = lookAt;
-         characterModel.eulerAngles = new Vector3(0, characterModel.eulerAngles.y, 0);
+         //characterModel.eulerAngles = new Vector3(0, characterModel.eulerAngles.y, 0);
          print(lookAt);
       }
    }

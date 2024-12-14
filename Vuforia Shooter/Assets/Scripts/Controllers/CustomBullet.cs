@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CustomBullet : MonoBehaviour
 {
-    private Weapon antiTankRifleConfig;
+    private WeaponConfig antiTankRifleConfig;
 
     private Rigidbody rb;
     

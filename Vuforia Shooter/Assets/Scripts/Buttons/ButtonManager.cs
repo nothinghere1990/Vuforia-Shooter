@@ -4,7 +4,7 @@ public class ButtonManager : MonoBehaviour
 {
     public static ButtonManager Instance { get; private set; }
 
-    public ScriptableObject clickedScriptableObject;
+    public ScriptableObject clickedConfig;
     
     private void Awake()
     {
@@ -14,9 +14,5 @@ public class ButtonManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
-    }
-
-    private void Start()
-    {
     }
 }

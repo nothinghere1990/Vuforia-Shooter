@@ -14,5 +14,5 @@ public class GameAssets : MonoBehaviour
         }
     }
     
-    public Weapon antiTankRifleConfig;
+    public WeaponConfig antiTankRifleConfig;
 }

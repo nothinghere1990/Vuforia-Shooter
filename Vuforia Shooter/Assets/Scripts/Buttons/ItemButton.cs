@@ -1,17 +1,16 @@
-using System;
 using UnityEngine;
 
 public class ItemButton : MonoBehaviour
 {
-    public ScriptableObject Item;
+    public ScriptableObject itemConfig;
 
     private void OnMouseUpAsButton()
     {
         //Check if this card is weapon and send weapon game script obj.
-        if (Item.GetType() == typeof(Weapon))
+        if (itemConfig.GetType() == typeof(WeaponConfig))
         {
-            Weapon weapon = (Weapon)Item;
-            ButtonManager.Instance.clickedScriptableObject = weapon;
+            WeaponConfig weaponConfig = (WeaponConfig)itemConfig;
+            ButtonManager.Instance.clickedConfig = weaponConfig;
         }
     }
 }

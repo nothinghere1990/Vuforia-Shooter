@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1d1b36e9daccb4ca0f47d2ac7d56bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedScriptableObject: {fileID: 0}
+  clickedConfig: {fileID: 0}
 --- !u!1 &430595566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810de443f75d0e5468e07eb02608ff15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: ff5c954cfde308e418d48767c41b4226, type: 2}
+  itemConfig: {fileID: 0}
 --- !u!65 &1141969548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2087,6 +2087,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1956053784}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ResetCharacterPostion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1956053784}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: ActiveController
         m_Mode: 6
         m_Arguments:
@@ -2196,8 +2208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6535d9748c6f146aa784a6c0c5abca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdingItem: {fileID: 0}
-  monster: {fileID: 0}
 --- !u!114 &1956053785
 MonoBehaviour:
   m_ObjectHideFlags: 0

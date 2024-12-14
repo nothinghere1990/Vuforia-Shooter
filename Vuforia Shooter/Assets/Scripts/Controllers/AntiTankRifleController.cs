@@ -3,13 +3,11 @@ using Random = UnityEngine.Random;
 
 public class AntiTankRifleController : MonoBehaviour
 {
-    private PlayerController playerController;
-    
     private HoldingButton attackBtn;
     
     private Transform eyes;
     
-    private Weapon antiTankRifleConfig;
+    private WeaponConfig antiTankRifleConfig;
     private Transform firePoint;
     private Transform bulletPool;
     private float timeBetweenShots;
@@ -19,8 +17,6 @@ public class AntiTankRifleController : MonoBehaviour
     
     private void Awake()
     {
-        playerController = transform.parent.parent.GetComponent<PlayerController>();
-        
         attackBtn = GameObject.Find("AttackButton").GetComponent<HoldingButton>();
         
         eyes = transform.parent.Find("Eyes");
