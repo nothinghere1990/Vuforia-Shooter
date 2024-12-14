@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 106
+  controlID: 31
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 62
+  controlID: 32
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -272,8 +272,8 @@ MonoBehaviour:
     y: 0
     width: 524
     height: 939
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -707,9 +707,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.7161075, y: -0.1432484, z: 0.3622506}
+    m_Target: {x: 558.3994, y: 199.87654, z: 43.276375}
     speed: 2
-    m_Value: {x: 1.7161075, y: -0.1432484, z: 0.3622506}
+    m_Value: {x: 558.3994, y: 199.87654, z: 43.276375}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -755,13 +755,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.15225182, y: -0.11535932, z: 0.017887244, w: 0.9814793}
+    m_Target: {x: 0.005396523, y: -0.02249686, z: 0.0001181494, w: 0.9997865}
     speed: 2
-    m_Value: {x: 0.15224347, y: -0.11535298, z: 0.01788626, w: 0.98142534}
+    m_Value: {x: 0.005396231, y: -0.022495642, z: 0.000118143005, w: 0.9997324}
   m_Size:
-    m_Target: 4.533614
+    m_Target: 366.30063
     speed: 2
-    m_Value: 4.533614
+    m_Value: 366.30063
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -823,9 +823,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: e2e6ffff2cfbffffb65e0000c65e0000de5e0000e85e0000fe5e0000145f00002a5f0000345f000072650000826500009a650000a4650000ba650000d0650000e6650000f0650000
+      m_SelectedIDs: 12620000
+      m_LastClickedID: 25106
+      m_ExpandedIDs: 28fbffff12620000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -894,7 +894,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Prefabs
+    - Assets/Resources/Images
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -902,16 +902,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Prefabs
+  - Assets/Resources/Images
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\john1\Vuforia-Shooter\Vuforia Shooter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4a630000
-    m_LastClickedID: 25418
-    m_ExpandedIDs: 00000000386300003c6300005063000000ca9a3b
+    m_SelectedIDs: fc660000
+    m_LastClickedID: 26364
+    m_ExpandedIDs: 00000000e6660000e8660000ea660000ec66000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -939,7 +939,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000386300003a6300003c630000
+    m_ExpandedIDs: 00000000e6660000e8660000ea660000ec660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

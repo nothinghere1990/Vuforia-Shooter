@@ -1,5 +1,3 @@
-using System;
-using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,19 +5,23 @@ public class AntiTankRifleController : MonoBehaviour
 {
     private PlayerController playerController;
     
+    private HoldingButton attackBtn;
+    
     private Transform eyes;
     
     private Weapon antiTankRifleConfig;
     private Transform firePoint;
-
     private Transform bulletPool;
-
-    private bool startShooting;
-    private float bulletDuration;
+    private float timeBetweenShots;
+    
+    private bool readyToShoot;
+    private bool allowInvoke;
     
     private void Awake()
     {
         playerController = transform.parent.parent.GetComponent<PlayerController>();
+        
+        attackBtn = GameObject.Find("AttackButton").GetComponent<HoldingButton>();
         
         eyes = transform.parent.Find("Eyes");
         
@@ -31,16 +33,15 @@ public class AntiTankRifleController : MonoBehaviour
     
     private void Start()
     {
-        playerController.onFire += FireGun;
-
-        startShooting = false;
+        readyToShoot = true;
+        allowInvoke = true;
         
         foreach (Transform bullet in bulletPool)
         {
             bullet.gameObject.SetActive(false);
         }
-
-        bulletDuration = antiTankRifleConfig.bulletDuration;
+        
+        timeBetweenShots = 1f / antiTankRifleConfig.fireRate * 60f;
     }
 
     private GameObject InactiveBulletInPool()
@@ -53,31 +54,17 @@ public class AntiTankRifleController : MonoBehaviour
         return null;
     }
 
-    private void FireGun()
-    {
-        startShooting = true;
-        //bullet.transform.DOMove(playerController.monster.position, .5f);
-    }
-
     private void FixedUpdate()
     {
-        if (!startShooting) return;
+        if (readyToShoot && attackBtn.isHolding) Shoot();
+    }
+
+    private void Shoot()
+    {
+        readyToShoot = false;
         
         GameObject bullet = InactiveBulletInPool();
-        
-        if (bullet == null) return;
-        
-        
-        
-        //Inactive bullet.
-        if (bulletDuration <= 0)
-        {
-            print("disappear");
-            startShooting = false;
-            bullet.SetActive(false);
-            bullet.transform.position = firePoint.position;
-            bulletDuration = antiTankRifleConfig.bulletDuration;
-        }
+        if (bullet == null) goto ResetShot;
         
         //Calculate hit point.
         Ray ray = new Ray(eyes.position, eyes.forward);
@@ -93,21 +80,28 @@ public class AntiTankRifleController : MonoBehaviour
         float spreadX = Random.Range(-antiTankRifleConfig.spread, antiTankRifleConfig.spread);
         float spreadY = Random.Range(-antiTankRifleConfig.spread, antiTankRifleConfig.spread);
         
-        Vector3 directionWithSpread = new Vector3
-            (directionWithoutSpread.x + spreadX, directionWithoutSpread.y + spreadY, directionWithoutSpread.z);
+        Vector3 directionWithSpread = directionWithoutSpread + new Vector3(spreadX, spreadY, 0);
 
         //Active and fire bullet in pool.
         bullet.transform.position = firePoint.position;
-        bullet.transform.forward = directionWithSpread.normalized;
+        bullet.transform.up = directionWithSpread.normalized;
         bullet.SetActive(true);
         
-        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * antiTankRifleConfig.gunFireForce, ForceMode.Impulse);
-        print("force");
-        bulletDuration -= Time.fixedDeltaTime;
+        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.up * antiTankRifleConfig.gunFireForce, ForceMode.Impulse);
+        
+        bullet.GetComponent<CustomBullet>().StartCountDown();
+        
+        ResetShot:
+        if (allowInvoke)
+        {
+            Invoke("ResetShot", timeBetweenShots);
+            allowInvoke = false;
+        }
     }
-
-    private void OnDisable()
+    
+    private void ResetShot()
     {
-        playerController.onFire -= FireGun;
+        readyToShoot = true;
+        allowInvoke = true;
     }
 }

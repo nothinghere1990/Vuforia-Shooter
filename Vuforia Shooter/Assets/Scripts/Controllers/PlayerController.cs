@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,10 +18,6 @@ public class PlayerController : MonoBehaviour
    
    private bool isMonsterFound;
    public Transform monster;
-
-   private Button attackBtn;
-
-   public Action onFire;
    
    private void Awake()
    {
@@ -30,7 +25,6 @@ public class PlayerController : MonoBehaviour
       charCon = GetComponentInChildren<CharacterController>();
       joystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
       monster = GameObject.Find("MonsterCard/Capsule").transform;
-      attackBtn = GameObject.Find("AttackButton").GetComponent<Button>();
    }
 
    private void Start()
@@ -38,7 +32,6 @@ public class PlayerController : MonoBehaviour
       moveSpeed = 5;
       rotateSpeed = 6;
       ActiveAimTracking(false);
-      attackBtn.onClick.AddListener(PlayerAttack);
    }
    
    public void ActiveController(bool input)
@@ -60,11 +53,6 @@ public class PlayerController : MonoBehaviour
    public void OnFoundMonster(bool inputValue)
    {
       isMonsterFound = inputValue;
-   }
-
-   private void PlayerAttack()
-   {
-      if (holdingItem != null && holdingItem.GetType() == typeof(Weapon)) onFire?.Invoke();
    }
 
    private void FixedUpdate()
