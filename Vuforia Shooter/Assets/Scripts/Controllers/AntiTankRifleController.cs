@@ -85,7 +85,7 @@ public class AntiTankRifleController : MonoBehaviour
         
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.up * antiTankRifleConfig.gunFireForce, ForceMode.Impulse);
         
-        bullet.GetComponent<CustomBullet>().StartCountDown();
+        bullet.GetComponent<CustomAntiTankRifleBullet>().StartCountDown();
         
         ResetShot:
         if (allowInvoke)

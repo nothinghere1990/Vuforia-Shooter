@@ -10,6 +10,7 @@ public class WeaponConfig : ScriptableObject
    public float fireRate;
    public float spread;
    public float gunFireForce;
+   public float damage;
    public float bulletDuration;
    
    public enum FireMode

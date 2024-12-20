@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ea4d405988cf647b922ffb3e30a0c8, type: 3}
   m_Name: Anti-TankRifleConfig
   m_EditorClassIdentifier: 
-  name: 
+  weaponNname: 
   weaponModel: {fileID: 3464413162648894712, guid: 345dfa308914cfd4283f6c88fe0fdaf3, type: 3}
   fireMode: 0
   fireRate: 100
-  spread: 5
-  gunFireForce: 100
+  spread: 1
+  gunFireForce: 50
+  damage: 80
   bulletDuration: 5
