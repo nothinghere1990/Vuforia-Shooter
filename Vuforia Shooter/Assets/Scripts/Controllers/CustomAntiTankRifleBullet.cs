@@ -35,6 +35,8 @@ public class CustomAntiTankRifleBullet : MonoBehaviour
     private void OnTriggerEnter(Collider objectHitByBullet)
     {
         IDamagable damagable = objectHitByBullet.transform.parent.GetComponent<IDamagable>();
+        
+        if (damagable == null) return;
         damagable.Damage(antiTankRifleConfig.damage);
     }
 }

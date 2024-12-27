@@ -15,4 +15,5 @@ public class GameAssets : MonoBehaviour
     }
     
     public WeaponConfig antiTankRifleConfig;
+    public GameObject healthSliderUI;
 }

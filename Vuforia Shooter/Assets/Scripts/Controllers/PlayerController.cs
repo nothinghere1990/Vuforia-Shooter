@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-   private FixedJoystick joystick;
+   private DynamicJoystick joystick;
    
    private CharacterController charCon;
    private Transform characterModel;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
    {
       characterModel = transform.GetChild(0);
       charCon = GetComponentInChildren<CharacterController>();
-      joystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
+      joystick = GameObject.Find("Dynamic Joystick").GetComponent<DynamicJoystick>();
       monster = GameObject.Find("MonsterCard/Capsule").transform;
    }
 

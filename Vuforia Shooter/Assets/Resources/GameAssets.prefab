@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antiTankRifleConfig: {fileID: 11400000, guid: ff5c954cfde308e418d48767c41b4226, type: 2}
+  healthSliderUI: {fileID: 7437977774648228334, guid: 61d2e4d8da3bfaf4d92990b4c3dac00e, type: 3}

@@ -1,42 +1,81 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamagable
 {
-    private Slider healthSliderUI;
+    private GameObject model;
+    
     public Team team;
-    public float healthAmount;
+    public float fullHealthAmount;
+    
+    private Transform content;
+    private Slider healthSliderUI;
+    private float currentHealthAmount;
+    private bool isAlive;
 
     private void Awake()
     {
-        healthSliderUI = GameObject.Find("MonsterHealthBar").GetComponent<Slider>();
-    }
-
-    private void Start()
-    {
-        healthSliderUI.gameObject.SetActive(false);
+        model = transform.Find("Capsule").gameObject;
+        content = GameObject.Find("Content").transform;
+        isAlive = false;
     }
 
     public void InitializeHealth()
     {
-        healthSliderUI.gameObject.SetActive(true);
-        healthSliderUI.maxValue = healthAmount;
+        switch (team)
+        {
+            case Team.Player:
+                break;
+
+            case Team.Monster:
+                healthSliderUI = Instantiate(GameAssets.i.healthSliderUI, content).GetComponent<Slider>();
+                healthSliderUI.gameObject.name = "MonsterHealthBar";
+                break;
+
+            case Team.Item:
+                break;
+        }
+
+        isAlive = true;
+        model.SetActive(true);
+        currentHealthAmount = fullHealthAmount;
+        healthSliderUI.maxValue = fullHealthAmount;
     }
 
     public void Damage(float damageAmount)
     {
-        healthAmount -= damageAmount;
+        currentHealthAmount -= damageAmount;
     }
 
     private void Update()
     {
-        healthSliderUI.value = Mathf.Lerp(healthSliderUI.value, healthAmount, .5f);
+        if (healthSliderUI == null) return;
+        
+        healthSliderUI.value = Mathf.Lerp(healthSliderUI.value, currentHealthAmount, .1f);
+
+        if (currentHealthAmount <= 0 && isAlive)
+        {
+            StartCoroutine(DeathAni());
+        }
     }
 
-    public void CloseHealth()
+    private IEnumerator DeathAni()
     {
-        healthSliderUI.gameObject.SetActive(false);
+        isAlive = false;
+
+        for (int i = 0; i < 3; i++)
+        {
+            model.SetActive(true);
+            yield return new WaitForSeconds(.2f);
+            model.SetActive(false);
+            yield return new WaitForSeconds(.2f);
+        }
+    }
+
+    public void DestroyHealth()
+    {
+        Destroy(healthSliderUI.gameObject);
     }
 
     public enum Team
